@@ -46,7 +46,7 @@ Nulla diam purus, pellentesque id arcu eget, condimentum rutrum ex. Aliquam plac
       {/* Barra de navegación */}
       <AppBar position="static">
         <Typography variant="h6" textAlign="center" p={2}>
-          Dashboard Profesional
+          Colors Ascii Art
         </Typography>
       </AppBar>
 
@@ -81,7 +81,7 @@ Nulla diam purus, pellentesque id arcu eget, condimentum rutrum ex. Aliquam plac
               <BasicConfig setCalculateRGB={setCalculateRGB} />
             </TabPanel>
             <TabPanel value={activeTab} index={1} >
-              Modo 2: Configuración de Tamaño
+              En construcción ...
             </TabPanel>
           </Paper>
         </Grid2>
