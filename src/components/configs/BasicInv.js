@@ -3,16 +3,17 @@ import { Slider, Typography, Box} from '@mui/material';
 import { map } from './utils';
 
 
-function BasicConfig({ setCalculateRGB }) {
+
+function BasicInvConfig({ setCalculateRGB }) {
     const [redIntensity, setRedIntensity] = useState([0, 255]);
     const [greenIntensity, setGreenIntensity] = useState([0, 255]);
     const [blueIntensity, setBlueIntensity] = useState([0, 255]);
 
     useEffect(() => {
         setCalculateRGB(() => (charPrev, char, charNext) => {
-            const r = map(charPrev ? charPrev.charCodeAt(0) % 256 : 0, 0, 255, redIntensity[0], redIntensity[1]);
-            const g = map(char ? char.charCodeAt(0) % 256 : 0, 0, 255, greenIntensity[0], greenIntensity[1]);
-            const b = map(charNext ? charNext.charCodeAt(0) % 256 : 0, 0, 255, blueIntensity[0], blueIntensity[1]);
+            const r = map(charPrev ? 256 - charPrev.charCodeAt(0) % 256 : 0, 0, 255, redIntensity[0], redIntensity[1]);
+            const g = map(char ? 256 - char.charCodeAt(0) % 256 : 0, 0, 255, greenIntensity[0], greenIntensity[1]);
+            const b = map(charNext ? 256 - charNext.charCodeAt(0) % 256 : 0, 0, 255, blueIntensity[0], blueIntensity[1]);
             return `rgb(${r},${g},${b})`;
         });
       }, [setCalculateRGB, redIntensity, greenIntensity, blueIntensity]);
@@ -33,10 +34,10 @@ function BasicConfig({ setCalculateRGB }) {
             >
                 <pre>
                     <code>
-                        Mapping directo <br />
-                        R: asciiPrev  <br />
-                        G: ascii  <br />
-                        B: asciiNext
+                        Mapping inverso <br />
+                        R: 255 - asciiPrev  <br />
+                        G: 255 - ascii  <br />
+                        B: 255 - asciiNext
                     </code>
                 </pre>
             </Box>
@@ -70,4 +71,4 @@ function BasicConfig({ setCalculateRGB }) {
     );
 }
 
-export default BasicConfig;
+export default BasicInvConfig;

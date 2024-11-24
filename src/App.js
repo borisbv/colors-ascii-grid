@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { AppBar, Tabs, Tab, TextField, Typography, Box, Grid2, Paper } from '@mui/material';
 import Canvas from './components/canvas';
 import BasicConfig from './components/configs/Basic';
+import BasicInvConfig from './components/configs/BasicInv';
+import PsicColorConfig from './components/configs/PsicColor';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -75,13 +77,17 @@ Nulla diam purus, pellentesque id arcu eget, condimentum rutrum ex. Aliquam plac
               value={activeTab}
             >
               <Tab value={0} label="Basic" {...a11yProps(0)} />
-              <Tab value={1} label="Modo 2" {...a11yProps(0)} />
+              <Tab value={1} label="BasicInv" {...a11yProps(0)} />
+              <Tab value={2} label="PsicColor" {...a11yProps(0)} />
             </Tabs>
             <TabPanel value={activeTab} index={0} >
               <BasicConfig setCalculateRGB={setCalculateRGB} />
             </TabPanel>
             <TabPanel value={activeTab} index={1} >
-              En construcción ...
+              <BasicInvConfig setCalculateRGB={setCalculateRGB} />
+            </TabPanel>
+            <TabPanel value={activeTab} index={2} >
+              <PsicColorConfig setCalculateRGB={setCalculateRGB} />
             </TabPanel>
           </Paper>
         </Grid2>
